@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Flex, Select, Box, Text, Input, Spinner, Icon, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
@@ -7,9 +6,9 @@ import Image from 'next/image';
 
 import { filterData, getFilterValues } from '../utils/filterData';
 import { baseUrl, fetchApi } from '../utils/fetchApi';
-import noresult from '../asset/images/noresult.svg'
+import noresult from '../assets/images/noresult.svg';
 
-export default function SearchFilters() {
+ function SearchFilters() {
   const [filters] = useState(filterData);
   const [searchTerm, setSearchTerm] = useState('');
   const [locationData, setLocationData] = useState();
@@ -28,6 +27,7 @@ export default function SearchFilters() {
         query[item.name] = item.value
       }
     })
+
     router.push({ pathname: path, query: query });
   };
 
@@ -100,7 +100,7 @@ export default function SearchFilters() {
                 ))}
                 {!loading && !locationData?.length && (
                   <Flex justifyContent='center' alignItems='center' flexDir='column' marginTop='5' marginBottom='5' >
-                    <Image src={noresult} alt={noresult}/>
+                    <Image src={noresult} alt=''/>
                     <Text fontSize='xl' marginTop='3'>
                       Waiting to search!
                     </Text>
@@ -113,4 +113,5 @@ export default function SearchFilters() {
       </Flex>
     </Flex>
   );
-                }
+}
+export default SearchFilters;
